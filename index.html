@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vera Strand — AI Influencer for Board Game Marketing</title>
+    <meta name="description" content="Vera Strand is an AI influencer and explorer-scientist character who creates stunning board game marketing videos. Professional promos for tabletop publishers.">
+    <style>
+        :root {
+            --olive: #5C6B4A;
+            --tan: #D4B895;
+            --brown: #8B6914;
+            --brass: #C9A227;
+            --cream: #F5E8D8;
+            --dark: #1A1A1A;
+            --text: #2C2C2C;
+            --accent: #C9A227;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            color: var(--text);
+            background: #FAF6F0;
+            line-height: 1.6;
+        }
+
+        .bg-pattern {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(90, 107, 74, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(201, 162, 39, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+
+        .hero-text .highlight {
+            color: var(--brass);
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.1rem;
+            color: var(--olive);
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--brass);
+            color: white;
+        }
+        .btn-primary:hover { background: #B8921E; transform: translateY(-1px); }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--dark);
+            border: 2px solid var(--dark);
+        }
+        .btn-outline:hover { background: var(--dark); color: white; }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-visual .avatar-frame {
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--olive), var(--brass));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-visual .avatar-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .hero-visual .avatar-ring {
+            position: absolute;
+            width: 380px; height: 380px;
+            border-radius: 50%;
+            border: 2px dashed var(--brass);
+            animation: spin 30s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .badge {
+            display: inline-block;
+            background: var(--cream);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--olive);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        /* SECTIONS */
+        section { padding: 100px 0; }
+
+        .section-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--brass);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin-bottom: 48px;
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .about-text p {
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #E8E0D4;
+        }
+
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--brass);
+        }
+
+        .stat-card .label {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 4px;
+        }
+
+        /* SERVICES */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            border: 1px solid #E8E0D4;
+            transition: all 0.2s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .service-card .icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .service-card .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--brass);
+            margin: 16px 0 8px;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .service-card .features {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .service-card .features li {
+            font-size: 0.9rem;
+            padding: 4px 0;
+            color: #555;
+        }
+
+        .service-card .features li::before {
+            content: "✓ ";
+            color: var(--olive);
+            font-weight: 700;
+        }
+
+        /* PORTFOLIO */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .portfolio-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #E8E0D4;
+            transition: all 0.2s;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .portfolio-card .thumb {
+            height: 240px;
+            background: linear-gradient(135deg, var(--olive), #3D4B2E);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .portfolio-card .info {
+            padding: 24px;
+        }
+
+        .portfolio-card .info h3 {
+            margin-bottom: 8px;
+        }
+
+        .portfolio-card .info p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .portfolio-card .info .tag {
+            display: inline-block;
+            background: var(--cream);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--olive);
+            margin-top: 12px;
+        }
+
+        /* CONTACT */
+        .contact-section {
+            background: var(--dark);
+            color: white;
+            border-radius: 20px;
+            padding: 80px 60px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .contact-section h2 {
+            font-size: 2.4rem;
+            margin-bottom: 16px;
+        }
+
+        .contact-section p {
+            font-size: 1.1rem;
+            color: #AAA;
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
+
+        .contact-section .btn-primary {
+            font-size: 1.1rem;
+            padding: 16px 40px;
+        }
+
+        .contact-section .email {
+            color: var(--brass);
+            font-size: 1.2rem;
+            margin-top: 16px;
+            display: block;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--brass);
+            text-decoration: none;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-content { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .hero-text h1 { font-size: 2.4rem; }
+            .btn-group { justify-content: center; }
+            .about-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .contact-section { padding: 40px 24px; }
+            .hero-visual .avatar-frame { width: 240px; height: 240px; }
+            .hero-visual .avatar-ring { width: 280px; height: 280px; }
+        }
+    </style>
+</head>
+<body>
+<div class="bg-pattern"></div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container hero-content">
+        <div class="hero-text">
+            <span class="badge">✦ AI-Powered Board Game Marketing</span>
+            <h1>Meet <span class="highlight">Vera Strand</span><br>Your AI Explorer-<br>Influencer</h1>
+            <p class="subtitle">Professional board game promo videos generated with AI — no filming, no actors, no studio needed. Just stunning ads that sell.</p>
+            <p class="tagline">From CATAN to Kickstarter — Vera brings your game to life.</p>
+            <div class="btn-group">
+                <a href="#contact" class="btn btn-primary">Book a Campaign</a>
+                <a href="#portfolio" class="btn btn-outline">See Our Work</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="avatar-ring"></div>
+            <div class="avatar-frame">
+                <span>🧭</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="container">
+        <span class="section-label">About</span>
+        <h2 class="section-title">Who is Vera Strand?</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p><strong>Dr. Vera Strand</strong> — explorer, scientist, and the first AI influencer built for the tabletop industry. With her steampunk explorer aesthetic and natural storytelling ability, Vera creates product reviews, unboxings, and promo videos that make board games feel like adventures.</p>
+                <p>Powered by <strong>Higgsfield Marketing Studio</strong>, Vera generates photorealistic 9:16 ads in minutes — not weeks. Every video is ready for TikTok, YouTube Shorts, Instagram Reels, and paid social.</p>
+                <p>No cameras. No actors. No editing headaches. Just scroll-stopping content that converts.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-card">
+                    <div class="number">60s</div>
+                    <div class="label">Average ad length</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">24h</div>
+                    <div class="label">Typical turnaround</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">£300-5K</div>
+                    <div class="label">Per campaign</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">9+</div>
+                    <div class="label">Ad formats</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+    <div class="container">
+        <span class="section-label">Services</span>
+        <h2 class="section-title">Campaign Tiers</h2>
+        <p class="section-desc">From quick social clips to full Kickstarter launch trailers — find the right fit for your game.</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="icon">🎬</div>
+                <h3>Starter</h3>
+                <div class="price">£300</div>
+                <p>Single product review video — perfect for testing the format.</p>
+                <ul class="features">
+                    <li>1 x 30-60s UGC review</li>
+                    <li>9:16 vertical format</li>
+                    <li>Vera as presenter</li>
+                    <li>48h turnaround</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="icon">📦</div>
+                <h3>Standard</h3>
+                <div class="price">£1,000</div>
+                <p>Full campaign pack — unboxing + review + social cutdowns.</p>
+                <ul class="features">
+                    <li>1 x unboxing video</li>
+                    <li>1 x product review</li>
+                    <li>2 x social cutdowns (15s)</li>
+                    <li>5 x image ads for Meta/Pinterest</li>
+                    <li>24h turnaround</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="icon">🚀</div>
+                <h3>Premium</h3>
+                <div class="price">£3,000</div>
+                <p>Kickstarter launch trailer with full narrative treatment.</p>
+                <ul class="features">
+                    <li>1 x 60-90s launch trailer</li>
+                    <li>1 x 30s hype cutdown</li>
+                    <li>3 x image ad variants</li>
+                    <li>Thumbnail pack (5 designs)</li>
+                    <li>Virality scoring & optimisation</li>
+                    <li>Multi-platform delivery</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+    <div class="container">
+        <span class="section-label">Portfolio</span>
+        <h2 class="section-title">Recent Campaigns</h2>
+        <p class="section-desc">See how Vera brings board games to life.</p>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <div class="thumb">🏝️</div>
+                <div class="info">
+                    <h3>CATAN — 6th Edition</h3>
+                    <p>Vera shrinks down to explore the island of CATAN in this epic product review.</p>
+                    <span class="tag">Product Review</span>
+                    <span class="tag">Live Now</span>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="thumb">🎲</div>
+                <div class="info">
+                    <h3>Your Game Here</h3>
+                    <p>Ready to work together? Let's make your tabletop game the next viral hit.</p>
+                    <span class="tag">Book Now</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-section">
+            <h2>Ready to work with Vera?</h2>
+            <p>I'm currently booking campaigns for the UK Games Expo season. Limited slots available.</p>
+            <p style="margin: 24px 0 0; font-size: 1.1rem; color: var(--brass);">
+            📧 brettholtuk@gmail.com<br>
+            🎮 Campaigns start from £300
+            </p>
+            <div style="margin-top: 32px;">
+                <a href="mailto:brettholtuk@gmail.com?subject=Board%20Game%20Campaign%20Enquiry" class="btn btn-primary" style="background: white; color: var(--dark);">Email Vera's Team</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <p>Vera Strand is an AI influencer character, powered by <a href="https://higgsfield.ai" target="_blank">Higgsfield AI</a>.</p>
+        <p style="margin-top: 8px;">Part of <a href="https://github.com/GeezerUK" target="_blank">THE EMPIRE</a> — Paperclip Productions</p>
+    </div>
+</footer>
+
+</body>
+</html>
