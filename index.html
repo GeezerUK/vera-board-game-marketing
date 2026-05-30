@@ -7,14 +7,20 @@
     <meta name="description" content="Vera Strand creates stunning board game marketing videos. Professional promos for tabletop publishers.">
     <style>
         :root {
-            --olive: #5C6B4A;
-            --tan: #D4B895;
-            --brown: #8B6914;
+            --bg: #0A0A08;
+            --surface: #141210;
+            --surface-raised: #1C1A16;
+            --olive: #6B7D55;
+            --olive-dim: #3D4B2E;
+            --tan: #C4B89A;
             --brass: #C9A227;
-            --cream: #F5E8D8;
-            --dark: #1A1A1A;
-            --text: #2C2C2C;
-            --accent: #C9A227;
+            --brass-glow: rgba(201, 162, 39, 0.15);
+            --cream: #E8E0D4;
+            --text: #E8E0D4;
+            --text-muted: #8A8478;
+            --text-dim: #6A6458;
+            --border: #2A2620;
+            --border-light: #3A3630;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,7 +28,7 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             color: var(--text);
-            background: #FAF6F0;
+            background: var(--bg);
             line-height: 1.6;
         }
 
@@ -31,8 +37,9 @@
             top: 0; left: 0;
             width: 100%; height: 100%;
             background: 
-                radial-gradient(ellipse at 20% 50%, rgba(90, 107, 74, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 50%, rgba(201, 162, 39, 0.05) 0%, transparent 50%);
+                radial-gradient(ellipse at 20% 50%, rgba(107, 125, 85, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 80%, rgba(201, 162, 39, 0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 0%, rgba(201, 162, 39, 0.03) 0%, transparent 40%);
             pointer-events: none;
             z-index: 0;
         }
@@ -66,7 +73,7 @@
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 16px;
-            color: var(--dark);
+            color: var(--cream);
         }
 
         .hero-text .highlight {
@@ -75,7 +82,7 @@
 
         .hero-text .subtitle {
             font-size: 1.2rem;
-            color: #666;
+            color: var(--text-muted);
             margin-bottom: 24px;
         }
 
@@ -105,16 +112,16 @@
 
         .btn-primary {
             background: var(--brass);
-            color: white;
+            color: #0A0A08;
         }
-        .btn-primary:hover { background: #B8921E; transform: translateY(-1px); }
+        .btn-primary:hover { background: #D4AD2E; transform: translateY(-1px); box-shadow: 0 4px 20px var(--brass-glow); }
 
         .btn-outline {
             background: transparent;
-            color: var(--dark);
-            border: 2px solid var(--dark);
+            color: var(--cream);
+            border: 2px solid var(--border-light);
         }
-        .btn-outline:hover { background: var(--dark); color: white; }
+        .btn-outline:hover { background: var(--surface-raised); border-color: var(--brass); color: var(--brass); }
 
         .hero-visual {
             display: flex;
@@ -126,7 +133,7 @@
             width: 340px;
             height: 340px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--olive), var(--brass));
+            background: linear-gradient(135deg, var(--olive-dim), var(--brass));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -134,6 +141,7 @@
             color: white;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 0 60px var(--brass-glow);
         }
 
         .hero-visual .avatar-frame img {
@@ -149,20 +157,21 @@
             border-radius: 50%;
             border: 2px dashed var(--brass);
             animation: spin 30s linear infinite;
-            opacity: 0.3;
+            opacity: 0.2;
         }
 
         @keyframes spin { to { transform: rotate(360deg); } }
 
         .badge {
             display: inline-block;
-            background: var(--cream);
+            background: var(--surface-raised);
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.85rem;
-            color: var(--olive);
+            color: var(--brass);
             font-weight: 600;
             margin-bottom: 16px;
+            border: 1px solid var(--border);
         }
 
         /* SECTIONS */
@@ -181,12 +190,12 @@
             font-size: 2.4rem;
             font-weight: 700;
             margin-bottom: 16px;
-            color: var(--dark);
+            color: var(--cream);
         }
 
         .section-desc {
             font-size: 1.1rem;
-            color: #666;
+            color: var(--text-muted);
             max-width: 600px;
             margin-bottom: 48px;
         }
@@ -201,6 +210,11 @@
         .about-text p {
             margin-bottom: 16px;
             font-size: 1.05rem;
+            color: var(--text-muted);
+        }
+
+        .about-text p strong {
+            color: var(--cream);
         }
 
         .about-stats {
@@ -210,10 +224,10 @@
         }
 
         .stat-card {
-            background: white;
+            background: var(--surface-raised);
             border-radius: 12px;
             padding: 24px;
-            border: 1px solid #E8E0D4;
+            border: 1px solid var(--border);
         }
 
         .stat-card .number {
@@ -224,7 +238,7 @@
 
         .stat-card .label {
             font-size: 0.9rem;
-            color: #888;
+            color: var(--text-dim);
             margin-top: 4px;
         }
 
@@ -236,16 +250,17 @@
         }
 
         .service-card {
-            background: white;
+            background: var(--surface-raised);
             border-radius: 12px;
             padding: 32px;
-            border: 1px solid #E8E0D4;
+            border: 1px solid var(--border);
             transition: all 0.2s;
         }
 
         .service-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            border-color: var(--brass);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
 
         .service-card .icon {
@@ -256,6 +271,7 @@
         .service-card h3 {
             font-size: 1.2rem;
             margin-bottom: 8px;
+            color: var(--cream);
         }
 
         .service-card .price {
@@ -267,7 +283,7 @@
 
         .service-card p {
             font-size: 0.95rem;
-            color: #666;
+            color: var(--text-muted);
         }
 
         .service-card .features {
@@ -278,7 +294,7 @@
         .service-card .features li {
             font-size: 0.9rem;
             padding: 4px 0;
-            color: #555;
+            color: var(--text-dim);
         }
 
         .service-card .features li::before {
@@ -295,23 +311,24 @@
         }
 
         .portfolio-card {
-            background: white;
+            background: var(--surface-raised);
             border-radius: 12px;
             overflow: hidden;
-            border: 1px solid #E8E0D4;
+            border: 1px solid var(--border);
             transition: all 0.2s;
         }
 
         .portfolio-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            border-color: var(--border-light);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
 
         .portfolio-card .thumb {
             width: 100%;
             aspect-ratio: 9 / 16;
             max-height: 70vh;
-            background: linear-gradient(135deg, var(--olive), #3D4B2E);
+            background: linear-gradient(135deg, var(--olive-dim), #1A1A12);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -326,27 +343,29 @@
 
         .portfolio-card .info h3 {
             margin-bottom: 8px;
+            color: var(--cream);
         }
 
         .portfolio-card .info p {
-            color: #666;
+            color: var(--text-muted);
             font-size: 0.95rem;
         }
 
         .portfolio-card .info .tag {
             display: inline-block;
-            background: var(--cream);
+            background: var(--surface);
             padding: 4px 10px;
             border-radius: 4px;
             font-size: 0.8rem;
-            color: var(--olive);
+            color: var(--text-muted);
+            border: 1px solid var(--border);
             margin-top: 12px;
         }
 
         /* CONTACT */
         .contact-section {
-            background: var(--dark);
-            color: white;
+            background: linear-gradient(135deg, #141210, #1C1A16);
+            border: 1px solid var(--border-light);
             border-radius: 20px;
             padding: 80px 60px;
             text-align: center;
@@ -356,11 +375,12 @@
         .contact-section h2 {
             font-size: 2.4rem;
             margin-bottom: 16px;
+            color: var(--cream);
         }
 
         .contact-section p {
             font-size: 1.1rem;
-            color: #AAA;
+            color: var(--text-muted);
             max-width: 500px;
             margin: 0 auto 32px;
         }
@@ -368,6 +388,11 @@
         .contact-section .btn-primary {
             font-size: 1.1rem;
             padding: 16px 40px;
+            background: var(--brass);
+            color: #0A0A08;
+        }
+        .contact-section .btn-primary:hover {
+            box-shadow: 0 4px 24px var(--brass-glow);
         }
 
         .contact-section .email {
@@ -381,7 +406,7 @@
         footer {
             text-align: center;
             padding: 40px 0;
-            color: #888;
+            color: var(--text-dim);
             font-size: 0.9rem;
         }
 
@@ -498,7 +523,7 @@
             <div class="service-card">
                 <div class="icon">🚀</div>
                 <h3>Premium</h3>
-                <div class="price">£3,000</div>
+                <div class="price">£2,000</div>
                 <p>Kickstarter launch trailer with full narrative treatment.</p>
                 <ul class="features">
                     <li>1 x 60-90s launch trailer</li>
@@ -530,7 +555,7 @@
                 <div class="info">
                     <h3>CATAN — 6th Edition</h3>
                     <p>The finished 15-second promo — Vera Strand discovers the island of CATAN. Vertical 9:16 format, cinematic overlay, ready for Shorts & Reels.</p>
-                    <a href="https://amzn.to/3PwhFlV" target="_blank" class="tag" style="text-decoration: none; cursor: pointer; background: var(--brass); color: white; padding: 6px 14px; border-radius: 4px; font-weight: 600;">🛒 Buy on Amazon</a>
+                    <a href="https://amzn.to/3PwhFlV" target="_blank" class="tag" style="text-decoration: none; cursor: pointer; background: var(--brass); color: #0A0A08; padding: 6px 14px; border-radius: 4px; font-weight: 600; border: none;">🛒 Buy on Amazon</a>
                     <a href="./Catan-Promo.mp4" target="_blank" class="tag" style="text-decoration: none; cursor: pointer;">▶ Watch Full Video</a>
                     <span class="tag">Product Review</span>
                     <span class="tag">Cinematic Overlay</span>
@@ -570,7 +595,7 @@
             🎮 Campaigns start from £300
             </p>
             <div style="margin-top: 32px;">
-                <a href="mailto:brettholtuk@gmail.com?subject=Board%20Game%20Campaign%20Enquiry" class="btn btn-primary" style="background: white; color: var(--dark);">Email Vera's Team</a>
+                <a href="mailto:brettholtuk@gmail.com?subject=Board%20Game%20Campaign%20Enquiry" class="btn btn-primary">Email Vera's Team</a>
             </div>
         </div>
     </div>
