@@ -103,50 +103,42 @@
             color: #0A0A08;
         }
 
-        /* HERO VIDEO SECTION */
-        .hero-video-section {
-            position: relative;
-            width: 100%;
+        /* HERO SECTION — SPLIT */
+        .hero-split {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            padding: 100px 0 60px;
         }
 
-        .hero-video-bg {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
+        .hero-split .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
 
-        .hero-video-overlay {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(
-                to bottom,
-                rgba(10,10,8,0.3) 0%,
-                rgba(10,10,8,0.5) 50%,
-                rgba(10,10,8,0.85) 100%
-            );
-            z-index: 2;
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            color: var(--cream);
         }
 
-        .hero-video-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            padding: 120px 24px 80px;
-            max-width: 800px;
+        .hero-text .highlight {
+            color: var(--brass);
         }
 
-        .hero-video-content .badge {
+        .hero-text .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .hero-text .badge {
             display: inline-block;
-            background: rgba(28,26,22,0.8);
+            background: var(--surface-raised);
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.85rem;
@@ -154,51 +146,36 @@
             font-weight: 600;
             margin-bottom: 16px;
             border: 1px solid var(--border);
-            backdrop-filter: blur(4px);
         }
 
-        .hero-video-content h1 {
-            font-size: 3.6rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 16px;
-            color: white;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
-        }
-
-        .hero-video-content .highlight {
-            color: var(--brass);
-        }
-
-        .hero-video-content .subtitle {
-            font-size: 1.2rem;
-            color: rgba(232,224,212,0.8);
-            margin-bottom: 32px;
-            text-shadow: 0 1px 10px rgba(0,0,0,0.4);
-        }
-
-        .hero-video-content .btn-group {
+        .hero-text .btn-group {
             display: flex;
             gap: 16px;
-            justify-content: center;
             flex-wrap: wrap;
         }
 
-        /* Watch demo mute hint */
-        .mute-hint {
-            position: absolute;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 3;
-            color: var(--text-dim);
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            opacity: 0.6;
-            background: rgba(10,10,8,0.6);
-            padding: 6px 16px;
-            border-radius: 20px;
-            backdrop-filter: blur(4px);
+        .hero-video-frame {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-video-frame .video-wrapper {
+            width: 100%;
+            max-width: 380px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid var(--border-light);
+            background: var(--surface);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .hero-video-frame .video-wrapper video {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 9 / 16;
+            object-fit: cover;
         }
 
         /* BUTTONS */
@@ -475,9 +452,10 @@
             nav { padding: 12px 16px; }
             nav .nav-links { gap: 12px; }
             nav .nav-links a { font-size: 0.8rem; }
-            .hero-video-content h1 { font-size: 2.4rem; }
-            .hero-video-content .subtitle { font-size: 1rem; }
-            .btn-group { justify-content: center; }
+            .hero-split .container { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .hero-text h1 { font-size: 2.4rem; }
+            .hero-text .btn-group { justify-content: center; }
+            .hero-video-frame .video-wrapper { max-width: 300px; }
             .about-grid { grid-template-columns: 1fr; }
             .services-grid { grid-template-columns: 1fr; }
             .service-card.popular { transform: none; }
@@ -503,22 +481,26 @@
     </div>
 </nav>
 
-<!-- HERO VIDEO SECTION -->
-<section class="hero-video-section">
-    <video class="hero-video-bg" autoplay muted loop playsinline poster="ttr-thumbnail.jpeg">
-        <source src="vera-promo.mp4" type="video/mp4">
-    </video>
-    <div class="hero-video-overlay"></div>
-    <div class="hero-video-content">
-        <span class="badge">✦ AI UGC Board Game Marketing</span>
-        <h1>Your Game.<br><span class="highlight">Her World.</span></h1>
-        <p class="subtitle">Scroll-stopping AI-generated UGC promos from just £18. Vera Strand brings your board game to life — no crew, no studio, no delays.</p>
-        <div class="btn-group">
-            <a href="#services" class="btn btn-primary btn-large">View Pricing</a>
-            <a href="portfolio.html" class="btn btn-outline btn-large">See Our Work</a>
+<!-- HERO SPLIT -->
+<section class="hero-split">
+    <div class="container">
+        <div class="hero-text">
+            <span class="badge">✦ AI UGC Board Game Marketing</span>
+            <h1>Your Game.<br><span class="highlight">Her World.</span></h1>
+            <p class="subtitle">Scroll-stopping AI-generated UGC promos from just £18. Vera Strand brings your board game to life — no crew, no studio, no delays.</p>
+            <div class="btn-group">
+                <a href="#services" class="btn btn-primary btn-large">View Pricing</a>
+                <a href="portfolio.html" class="btn btn-outline btn-large">See Our Work</a>
+            </div>
+        </div>
+        <div class="hero-video-frame">
+            <div class="video-wrapper">
+                <video controls playsinline poster="ttr-thumbnail.jpeg">
+                    <source src="vera-promo.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
     </div>
-    <div class="mute-hint">▶ WATCH DEMO — TAP TO UNMUTE</div>
 </section>
 
 <!-- ABOUT -->
