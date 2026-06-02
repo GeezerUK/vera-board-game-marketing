@@ -353,6 +353,32 @@
             font-weight: 700;
         }
 
+        .service-card .order-btn {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .service-card .order-btn.square {
+            background: var(--brass);
+            color: #0A0A08;
+        }
+
+        .service-card .order-btn.square:hover {
+            background: #D4AD2E;
+            box-shadow: 0 4px 20px var(--brass-glow);
+            transform: translateY(-1px);
+        }
+
         .service-card .popular-badge {
             background: var(--brass);
             color: #0A0A08;
@@ -555,9 +581,10 @@
                     <li>30s UGC review</li>
                     <li>9:16 vertical format</li>
                     <li>Vera as presenter</li>
-                    <li>Script & hook included</li>
+                    <li>Custom script written for your game</li>
                     <li>48h turnaround</li>
                 </ul>
+                <a href="#" class="order-btn square" data-plan="basic">Order Now — £18</a>
             </div>
             <div class="service-card popular">
                 <div class="popular-badge">Most Popular</div>
@@ -571,8 +598,10 @@
                     <li>60s UGC review</li>
                     <li>9:16 vertical format</li>
                     <li>Vera as presenter</li>
+                    <li>Custom script & review hook</li>
                     <li>7-day turnaround</li>
                 </ul>
+                <a href="#" class="order-btn square" data-plan="standard">Order Now — £35</a>
             </div>
             <div class="service-card">
                 <div class="icon">🚀</div>
@@ -585,9 +614,11 @@
                     <li>2 x 60s UGC videos</li>
                     <li>Two different hooks/angles</li>
                     <li>9:16 vertical format</li>
+                    <li>Custom scripts for each angle</li>
                     <li>7-day turnaround</li>
                     <li>Multi-platform delivery</li>
                 </ul>
+                <a href="#" class="order-btn square" data-plan="premium">Order Now — £58</a>
             </div>
         </div>
     </div>
