@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vera Strand — Board Game Marketing</title>
-    <meta name="description" content="Vera Strand creates stunning board game marketing videos. Professional promos for tabletop publishers.">
+    <meta name="description" content="Vera Strand creates stunning board game marketing videos. Professional AI UGC promos for tabletop publishers. From £18.">
     <style>
         :root {
             --bg: #0A0A08;
@@ -36,7 +36,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: 
+            background:
                 radial-gradient(ellipse at 20% 50%, rgba(107, 125, 85, 0.06) 0%, transparent 60%),
                 radial-gradient(ellipse at 80% 80%, rgba(201, 162, 39, 0.04) 0%, transparent 50%),
                 radial-gradient(ellipse at 50% 0%, rgba(201, 162, 39, 0.03) 0%, transparent 40%);
@@ -52,53 +52,156 @@
             z-index: 1;
         }
 
-        /* HERO */
-        .hero {
-            min-height: 100vh;
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 80px 0;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 32px;
+            background: rgba(10,10,8,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
         }
 
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+        nav .logo {
+            font-weight: 700;
+            color: var(--brass);
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 24px;
             align-items: center;
         }
 
-        .hero-text h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 16px;
-            color: var(--cream);
+        nav .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
         }
 
-        .hero-text .highlight {
+        nav .nav-links a:hover {
             color: var(--brass);
         }
 
-        .hero-text .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 24px;
-        }
-
-        .hero-text .tagline {
-            font-size: 1.1rem;
-            color: var(--olive);
+        nav .nav-links .btn-nav {
+            background: var(--brass);
+            color: #0A0A08;
+            padding: 8px 20px;
+            border-radius: 6px;
             font-weight: 600;
-            margin-bottom: 32px;
         }
 
-        .btn-group {
+        nav .nav-links .btn-nav:hover {
+            background: #D4AD2E;
+            color: #0A0A08;
+        }
+
+        /* HERO VIDEO SECTION */
+        .hero-video-section {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-video-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-video-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(10,10,8,0.3) 0%,
+                rgba(10,10,8,0.5) 50%,
+                rgba(10,10,8,0.85) 100%
+            );
+            z-index: 2;
+        }
+
+        .hero-video-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 120px 24px 80px;
+            max-width: 800px;
+        }
+
+        .hero-video-content .badge {
+            display: inline-block;
+            background: rgba(28,26,22,0.8);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--brass);
+            font-weight: 600;
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-video-content h1 {
+            font-size: 3.6rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            color: white;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+        }
+
+        .hero-video-content .highlight {
+            color: var(--brass);
+        }
+
+        .hero-video-content .subtitle {
+            font-size: 1.2rem;
+            color: rgba(232,224,212,0.8);
+            margin-bottom: 32px;
+            text-shadow: 0 1px 10px rgba(0,0,0,0.4);
+        }
+
+        .hero-video-content .btn-group {
             display: flex;
             gap: 16px;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
+        /* Watch demo mute hint */
+        .mute-hint {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            opacity: 0.6;
+            background: rgba(10,10,8,0.6);
+            padding: 6px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* BUTTONS */
         .btn {
             display: inline-block;
             padding: 14px 32px;
@@ -123,55 +226,9 @@
         }
         .btn-outline:hover { background: var(--surface-raised); border-color: var(--brass); color: var(--brass); }
 
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-visual .avatar-frame {
-            width: 340px;
-            height: 340px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--olive-dim), var(--brass));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 60px var(--brass-glow);
-        }
-
-        .hero-visual .avatar-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .hero-visual .avatar-ring {
-            position: absolute;
-            width: 380px; height: 380px;
-            border-radius: 50%;
-            border: 2px dashed var(--brass);
-            animation: spin 30s linear infinite;
-            opacity: 0.2;
-        }
-
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        .badge {
-            display: inline-block;
-            background: var(--surface-raised);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: var(--brass);
-            font-weight: 600;
-            margin-bottom: 16px;
-            border: 1px solid var(--border);
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 1.1rem;
         }
 
         /* SECTIONS */
@@ -184,6 +241,7 @@
             color: var(--brass);
             font-weight: 700;
             margin-bottom: 8px;
+            text-align: center;
         }
 
         .section-title {
@@ -191,13 +249,15 @@
             font-weight: 700;
             margin-bottom: 16px;
             color: var(--cream);
+            text-align: center;
         }
 
         .section-desc {
             font-size: 1.1rem;
             color: var(--text-muted);
             max-width: 600px;
-            margin-bottom: 48px;
+            margin: 0 auto 48px;
+            text-align: center;
         }
 
         /* ABOUT */
@@ -228,6 +288,7 @@
             border-radius: 12px;
             padding: 24px;
             border: 1px solid var(--border);
+            text-align: center;
         }
 
         .stat-card .number {
@@ -270,15 +331,27 @@
 
         .service-card h3 {
             font-size: 1.2rem;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             color: var(--cream);
         }
 
+        .service-card .sub-label {
+            font-size: 0.8rem;
+            color: var(--olive);
+            margin-bottom: 12px;
+        }
+
         .service-card .price {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--brass);
-            margin: 16px 0 8px;
+            margin: 8px 0;
+        }
+
+        .service-card .price-sub {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 16px;
         }
 
         .service-card p {
@@ -303,63 +376,48 @@
             font-weight: 700;
         }
 
-        /* PORTFOLIO */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .portfolio-card {
-            background: var(--surface-raised);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: all 0.2s;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--border-light);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-        }
-
-        .portfolio-card .thumb {
-            width: 100%;
-            aspect-ratio: 9 / 16;
-            max-height: 70vh;
-            background: linear-gradient(135deg, var(--olive-dim), #1A1A12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-            overflow: hidden;
-        }
-
-        .portfolio-card .info {
-            padding: 24px;
-        }
-
-        .portfolio-card .info h3 {
-            margin-bottom: 8px;
-            color: var(--cream);
-        }
-
-        .portfolio-card .info p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .portfolio-card .info .tag {
+        .service-card .popular-badge {
+            background: var(--brass);
+            color: #0A0A08;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 10px;
             display: inline-block;
-            background: var(--surface);
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-card.popular {
+            border-color: var(--brass);
+            transform: scale(1.03);
+            box-shadow: 0 0 30px var(--brass-glow);
+        }
+
+        .service-card.popular:hover {
+            transform: scale(1.03) translateY(-4px);
+        }
+
+        /* PORTFOLIO TEASER */
+        .portfolio-teaser {
+            background: var(--surface-raised);
+            border-radius: 16px;
+            padding: 60px 40px;
+            text-align: center;
             border: 1px solid var(--border);
-            margin-top: 12px;
+        }
+
+        .portfolio-teaser h3 {
+            font-size: 1.6rem;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+
+        .portfolio-teaser p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 24px;
         }
 
         /* CONTACT */
@@ -385,21 +443,18 @@
             margin: 0 auto 32px;
         }
 
-        .contact-section .btn-primary {
-            font-size: 1.1rem;
-            padding: 16px 40px;
-            background: var(--brass);
-            color: #0A0A08;
-        }
-        .contact-section .btn-primary:hover {
-            box-shadow: 0 4px 24px var(--brass-glow);
+        .contact-section .contact-details {
+            margin: 24px 0 32px;
+            font-size: 1.05rem;
+            line-height: 2;
         }
 
-        .contact-section .email {
+        .contact-section .contact-details span {
+            color: var(--text-dim);
+        }
+
+        .contact-section .contact-details .highlight-text {
             color: var(--brass);
-            font-size: 1.2rem;
-            margin-top: 16px;
-            display: block;
         }
 
         /* FOOTER */
@@ -417,41 +472,53 @@
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero-content { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-            .hero-text h1 { font-size: 2.4rem; }
+            nav { padding: 12px 16px; }
+            nav .nav-links { gap: 12px; }
+            nav .nav-links a { font-size: 0.8rem; }
+            .hero-video-content h1 { font-size: 2.4rem; }
+            .hero-video-content .subtitle { font-size: 1rem; }
             .btn-group { justify-content: center; }
             .about-grid { grid-template-columns: 1fr; }
             .services-grid { grid-template-columns: 1fr; }
-            .portfolio-grid { grid-template-columns: 1fr; }
+            .service-card.popular { transform: none; }
+            .service-card.popular:hover { transform: translateY(-4px); }
             .contact-section { padding: 40px 24px; }
-            .hero-visual .avatar-frame { width: 240px; height: 240px; }
-            .hero-visual .avatar-ring { width: 280px; height: 280px; }
+            .stat-card .number { font-size: 1.6rem; }
+            section { padding: 60px 0; }
+            .section-title { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 <div class="bg-pattern"></div>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="container hero-content">
-        <div class="hero-text">
-            <span class="badge">✦ Board Game Marketing</span>
-            <h1>Meet <span class="highlight">Vera Strand</span><br>Your Explorer-<br>Influencer</h1>
-            <p class="subtitle">Professional board game promo videos that make your game feel like an adventure.</p>
-            <p class="tagline">From CATAN to Kickstarter — Vera brings your game to life.</p>
-            <div class="btn-group">
-                <a href="#contact" class="btn btn-primary">Book a Campaign</a>
-                <a href="#portfolio" class="btn btn-outline">See Our Work</a>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <div class="avatar-ring"></div>
-            <div class="avatar-frame">
-                <span>🧭</span>
-            </div>
+<!-- NAV -->
+<nav>
+    <a href="/vera-board-game-marketing/" class="logo">✦ VERA STRAND</a>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Pricing</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="#contact" class="btn-nav">Book</a>
+    </div>
+</nav>
+
+<!-- HERO VIDEO SECTION -->
+<section class="hero-video-section">
+    <video class="hero-video-bg" autoplay muted loop playsinline poster="ttr-thumbnail.jpeg">
+        <source src="vera-promo.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay"></div>
+    <div class="hero-video-content">
+        <span class="badge">✦ AI UGC Board Game Marketing</span>
+        <h1>Your Game.<br><span class="highlight">Her World.</span></h1>
+        <p class="subtitle">Scroll-stopping AI-generated UGC promos from just £18. Vera Strand brings your board game to life — no crew, no studio, no delays.</p>
+        <div class="btn-group">
+            <a href="#services" class="btn btn-primary btn-large">View Pricing</a>
+            <a href="portfolio.html" class="btn btn-outline btn-large">See Our Work</a>
         </div>
     </div>
+    <div class="mute-hint">▶ WATCH DEMO — TAP TO UNMUTE</div>
 </section>
 
 <!-- ABOUT -->
@@ -468,19 +535,19 @@
             <div class="about-stats">
                 <div class="stat-card">
                     <div class="number">30s</div>
-                    <div class="label">Average ad length</div>
+                    <div class="label">Avg UGC Review</div>
                 </div>
                 <div class="stat-card">
                     <div class="number">24h</div>
                     <div class="label">Typical turnaround</div>
                 </div>
                 <div class="stat-card">
-                    <div class="number">£200-1K</div>
-                    <div class="label">Per campaign</div>
+                    <div class="number">£18</div>
+                    <div class="label">Campaigns from</div>
                 </div>
                 <div class="stat-card">
-                    <div class="number">9+</div>
-                    <div class="label">Ad formats</div>
+                    <div class="number">9:16</div>
+                    <div class="label">Vertical format</div>
                 </div>
             </div>
         </div>
@@ -491,46 +558,54 @@
 <section id="services">
     <div class="container">
         <span class="section-label">Services</span>
-        <h2 class="section-title">Campaign Tiers</h2>
-        <p class="section-desc">From quick social clips to full Kickstarter launch trailers — find the right fit for your game.</p>
-        
+        <h2 class="section-title">Simple Pricing. Real Results.</h2>
+        <p class="section-desc">Professional AI-generated UGC promos with Vera Strand. Pick the tier that fits your game.</p>
+
         <div class="services-grid">
             <div class="service-card">
                 <div class="icon">🎬</div>
-                <h3>Starter</h3>
-                <div class="price">£200</div>
-                <p>Single product review video — perfect for testing the format.</p>
+                <h3>Basic</h3>
+                <div class="sub-label">UGC Review</div>
+                <div class="price">£18</div>
+                <div class="price-sub">30-second video</div>
+                <p>A quick, punchy product review — perfect for testing the format.</p>
                 <ul class="features">
-                    <li>1 x 30-60s UGC review</li>
+                    <li>30s UGC review</li>
                     <li>9:16 vertical format</li>
                     <li>Vera as presenter</li>
+                    <li>Script & hook included</li>
                     <li>48h turnaround</li>
                 </ul>
             </div>
-            <div class="service-card">
+            <div class="service-card popular">
+                <div class="popular-badge">Most Popular</div>
                 <div class="icon">📦</div>
                 <h3>Standard</h3>
-                <div class="price">£500</div>
-                <p>Full campaign pack — unboxing + review + social cutdowns.</p>
+                <div class="sub-label">Unboxing + Review</div>
+                <div class="price">£35</div>
+                <div class="price-sub">60-second video</div>
+                <p>Full product showcase — unboxing, gameplay, and a compelling call to action.</p>
                 <ul class="features">
-                    <li>1 x unboxing video</li>
-                    <li>1 x product review</li>
-                    <li>2 x social cutdowns (15s)</li>
-                    <li>5 x image ads for Meta/Pinterest</li>
+                    <li>60s unboxing & review</li>
+                    <li>9:16 vertical format</li>
+                    <li>Vera as presenter</li>
+                    <li>Script & hook included</li>
                     <li>24h turnaround</li>
                 </ul>
             </div>
             <div class="service-card">
                 <div class="icon">🚀</div>
                 <h3>Premium</h3>
-                <div class="price">£1,000</div>
-                <p>Kickstarter launch trailer with full narrative treatment.</p>
+                <div class="sub-label">Double Feature</div>
+                <div class="price">£58</div>
+                <div class="price-sub">2 x 60-second videos</div>
+                <p>Two complete videos — different hooks, angles, and audiences. Maximum reach.</p>
                 <ul class="features">
-                    <li>1 x 60-90s launch trailer</li>
-                    <li>1 x 30s hype cutdown</li>
-                    <li>3 x image ad variants</li>
-                    <li>Thumbnail pack (5 designs)</li>
-                    <li>Virality scoring & optimisation</li>
+                    <li>2 x 60s UGC videos</li>
+                    <li>Two different hooks/angles</li>
+                    <li>9:16 vertical format</li>
+                    <li>Scripts & hooks included</li>
+                    <li>24h turnaround</li>
                     <li>Multi-platform delivery</li>
                 </ul>
             </div>
@@ -538,89 +613,13 @@
     </div>
 </section>
 
-<!-- PORTFOLIO -->
+<!-- PORTFOLIO TEASER -->
 <section id="portfolio">
     <div class="container">
-        <span class="section-label">Portfolio</span>
-        <h2 class="section-title">Recent Campaigns</h2>
-        <p class="section-desc">See how Vera brings board games to life.</p>
-        
-        <div class="portfolio-grid">
-            <!-- ALL'S WELL THAT ENDS -->
-            <div class="portfolio-card">
-                <div class="thumb" style="background: #1a1a1a; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                    <video width="100%" height="100%" controls style="object-fit: contain; max-height: 70vh;">
-                        <source src="./Alls-Well-That-Ends-Promo.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="info">
-                    <h3>All's Well That Ends — 11:44 Games</h3>
-                    <p>A 39-second vertical promo for this dark fantasy tactical combat campaign. Hook, problem, solution, and call to action — Vera Strand in the Western Wildlands.</p>
-                    <a href="https://www.kickstarter.com/projects/1144games/alls-well-that-ends" target="_blank" class="tag" style="text-decoration: none; cursor: pointer; background: var(--brass); color: #0A0A08; padding: 6px 14px; border-radius: 4px; font-weight: 600; border: none;">🔥 Kickstarter Pre-Launch</a>
-                    <a href="./Alls-Well-That-Ends-Promo.mp4" target="_blank" class="tag" style="text-decoration: none; cursor: pointer;">▶ Watch Full Video</a>
-                    <span class="tag">Tactical Combat</span>
-                    <span class="tag">39s Campaign</span>
-                    <span class="tag">Starter Package</span>
-                </div>
-            </div>
-            <!-- CATAN -->
-            <div class="portfolio-card">
-                <div class="thumb" style="background: #1a1a1a; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                    <video width="100%" height="100%" controls style="object-fit: contain; max-height: 70vh;">
-                        <source src="./Catan-Promo.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="info">
-                    <h3>CATAN — 6th Edition</h3>
-                    <p>The finished 15-second promo — Vera Strand discovers the island of CATAN. Vertical 9:16 format, cinematic overlay, ready for Shorts & Reels.</p>
-                    <a href="https://amzn.to/3PwhFlV" target="_blank" class="tag" style="text-decoration: none; cursor: pointer; background: var(--brass); color: #0A0A08; padding: 6px 14px; border-radius: 4px; font-weight: 600; border: none;">🛒 Buy on Amazon</a>
-                    <a href="./Catan-Promo.mp4" target="_blank" class="tag" style="text-decoration: none; cursor: pointer;">▶ Watch Full Video</a>
-                    <span class="tag">Product Review</span>
-                    <span class="tag">Cinematic Overlay</span>
-                    <span class="tag">15s Shorts-Ready</span>
-                </div>
-            </div>
-            <div class="portfolio-card">
-                <div class="thumb" style="background: #0A0A08; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                    <video width="100%" height="100%" controls poster="./ttr-thumbnail.jpeg" style="object-fit: contain; max-height: 70vh;">
-                        <source src="./Ticket-To-Ride-16.9.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="info">
-                    <h3>Ticket To Ride — 15th Anniversary</h3>
-                    <p>Vera Strand takes on the classic cross-country train adventure. Route planning, tension, and triumphant arrival — vertical Shorts format.</p>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px;">
-                        <a href="./Ticket-To-Ride-9.16.mp4" target="_blank" class="tag" style="text-decoration: none; cursor: pointer;">▶ Watch 9:16</a>
-                        <a href="./Ticket-To-Ride-16.9.mp4" target="_blank" class="tag" style="text-decoration: none; cursor: pointer;">▶ Watch 16:9</a>
-                    </div>
-                    <span class="tag">Unboxing & Review</span>
-                    <span class="tag">Train Adventure</span>
-                    <span class="tag">Dual Format</span>
-                </div>
-            </div>
-            <div class="portfolio-card">
-                <div class="thumb" style="background: #0A0A08; overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative;">
-                    <div style="position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                        <iframe src="https://player.vimeo.com/video/1197082133?badge=0&autopause=0&player_id=0&app_id=58479" 
-                                frameborder="0" 
-                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
-                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                                title="Yonder - Sinister Fish Games">
-                        </iframe>
-                    </div>
-                </div>
-                <div class="info">
-                    <h3>Yonder — Sinister Fish Games</h3>
-                    <p>Vera Strand discovers Yonder — a fantasy worker placement game from Sinister Fish Games. Build a settlement. Trade with fantasy races. Explore the unknown.</p>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px;">
-                        <a href="https://sinisterfish.com" target="_blank" class="tag" style="text-decoration: none; cursor: pointer; background: var(--brass); color: #0A0A08; padding: 6px 14px; border-radius: 4px; font-weight: 600; border: none;">🎮 Publisher Site</a>
-                        <a href="https://vimeo.com/1197082133" target="_blank" class="tag" style="text-decoration: none; cursor: pointer;">▶ Watch on Vimeo</a>
-                    </div>
-                    <span class="tag">Fantasy</span>
-                    <span class="tag">Worker Placement</span>
-                    <span class="tag">UKGE 2026</span>
-                </div>
-            </div>
+        <div class="portfolio-teaser">
+            <h3>📺 See Vera in Action</h3>
+            <p>View our full portfolio — CATAN, Ticket To Ride, All's Well That Ends, and more.</p>
+            <a href="portfolio.html" class="btn btn-primary">View Full Portfolio →</a>
         </div>
     </div>
 </section>
@@ -630,13 +629,13 @@
     <div class="container">
         <div class="contact-section">
             <h2>Ready to work with Vera?</h2>
-            <p>I'm currently booking campaigns for the UK Games Expo season. Limited slots available.</p>
-            <p style="margin: 24px 0 0; font-size: 1.1rem; color: var(--brass);">
-            📧 brettholtuk@gmail.com<br>
-            🎮 Campaigns start from £200
-            </p>
-            <div style="margin-top: 32px;">
-                <a href="mailto:brettholtuk@gmail.com?subject=Board%20Game%20Campaign%20Enquiry" class="btn btn-primary">Email Vera's Team</a>
+            <p>Currently booking campaigns. Limited slots available — get yours now.</p>
+            <div class="contact-details">
+                📧 <span class="highlight-text">brettholtuk@gmail.com</span><br>
+                🎮 Campaigns from <span class="highlight-text">£18</span>
+            </div>
+            <div>
+                <a href="mailto:brettholtuk@gmail.com?subject=Board%20Game%20Campaign%20Enquiry" class="btn btn-primary btn-large">Email Vera's Team</a>
             </div>
         </div>
     </div>
@@ -645,7 +644,7 @@
 <!-- FOOTER -->
 <footer>
     <div class="container">
-        <p>Vera Strand — Original Character.</p>
+        <p>Vera Strand — Original Character. <a href="portfolio.html">Portfolio</a> · <a href="#contact">Contact</a></p>
     </div>
 </footer>
 

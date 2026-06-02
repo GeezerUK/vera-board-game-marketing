@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Vera Strand Board Game Marketing</title>
+    <meta name="description" content="See Vera Strand's full portfolio of AI UGC board game marketing videos. CATAN, Ticket To Ride, All's Well That Ends, Yonder, and more.">
+    <style>
+        :root {
+            --bg: #0A0A08;
+            --surface: #141210;
+            --surface-raised: #1C1A16;
+            --olive: #6B7D55;
+            --olive-dim: #3D4B2E;
+            --tan: #C4B89A;
+            --brass: #C9A227;
+            --brass-glow: rgba(201, 162, 39, 0.15);
+            --cream: #E8E0D4;
+            --text: #E8E0D4;
+            --text-muted: #8A8478;
+            --text-dim: #6A6458;
+            --border: #2A2620;
+            --border-light: #3A3630;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+
+        .bg-pattern {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(107, 125, 85, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 80%, rgba(201, 162, 39, 0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 0%, rgba(201, 162, 39, 0.03) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 32px;
+            background: rgba(10,10,8,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .logo {
+            font-weight: 700;
+            color: var(--brass);
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        nav .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        nav .nav-links a:hover {
+            color: var(--brass);
+        }
+
+        nav .nav-links .btn-nav {
+            background: var(--brass);
+            color: #0A0A08;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        nav .nav-links .btn-nav:hover {
+            background: #D4AD2E;
+            color: #0A0A08;
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+
+        .page-header .highlight {
+            color: var(--brass);
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .page-header .back-link {
+            display: inline-block;
+            margin-top: 16px;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .page-header .back-link:hover {
+            color: var(--brass);
+        }
+
+        /* PORTFOLIO GRID */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            padding-bottom: 80px;
+        }
+
+        .portfolio-card {
+            background: var(--surface-raised);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-light);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .portfolio-card .video-wrapper {
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            max-height: 70vh;
+            background: linear-gradient(135deg, var(--olive-dim), #1A1A12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .portfolio-card .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            max-height: 70vh;
+        }
+
+        .portfolio-card .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
+
+        .portfolio-card .info {
+            padding: 24px;
+        }
+
+        .portfolio-card .info h3 {
+            margin-bottom: 8px;
+            color: var(--cream);
+            font-size: 1.15rem;
+        }
+
+        .portfolio-card .info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .portfolio-card .info .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-card .info .tag {
+            display: inline-block;
+            background: var(--surface);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .portfolio-card .info .tag-link {
+            background: var(--brass);
+            color: #0A0A08;
+            font-weight: 600;
+            border: none;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--brass);
+            text-decoration: none;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav { padding: 12px 16px; }
+            nav .nav-links { gap: 12px; }
+            nav .nav-links a { font-size: 0.8rem; }
+            .page-header h1 { font-size: 2rem; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="bg-pattern"></div>
+
+<!-- NAV -->
+<nav>
+    <a href="/vera-board-game-marketing/" class="logo">✦ VERA STRAND</a>
+    <div class="nav-links">
+        <a href="/vera-board-game-marketing/#about">About</a>
+        <a href="/vera-board-game-marketing/#services">Pricing</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="/vera-board-game-marketing/#contact" class="btn-nav">Book</a>
+    </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+    <div class="container">
+        <h1>Our <span class="highlight">Portfolio</span></h1>
+        <p>Every video Vera produces. Fresh AI UGC content added regularly.</p>
+        <a href="/vera-board-game-marketing/" class="back-link">← Back to Home</a>
+    </div>
+</div>
+
+<!-- PORTFOLIO GRID -->
+<section>
+    <div class="container">
+        <div class="portfolio-grid">
+
+            <!-- SYMPHONY TEST PROMO -->
+            <div class="portfolio-card">
+                <div class="video-wrapper">
+                    <video controls poster="ttr-thumbnail.jpeg">
+                        <source src="vera-promo.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="info">
+                    <h3>🎬 Vera's Demo Reel — Viral UGC Ad</h3>
+                    <p>The scroll-stopping TikTok Symphony demo — Vera in her jungle hut environment. Hook, problem, solution, CTA. This is the format that converts.</p>
+                    <div class="tags">
+                        <span class="tag">Demo Reel</span>
+                        <span class="tag">Scroll-Stopper</span>
+                        <span class="tag">TikTok Symphony</span>
+                        <span class="tag">30s</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ALL'S WELL THAT ENDS -->
+            <div class="portfolio-card">
+                <div class="video-wrapper">
+                    <video controls>
+                        <source src="Alls-Well-That-Ends-Promo.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="info">
+                    <h3>All's Well That Ends — 11:44 Games</h3>
+                    <p>A 39-second vertical promo for this dark fantasy tactical combat campaign. Hook, problem, solution, and call to action — Vera Strand in the Western Wildlands.</p>
+                    <div class="tags">
+                        <a href="https://www.kickstarter.com/projects/1144games/alls-well-that-ends" target="_blank" class="tag tag-link">🔥 Kickstarter Pre-Launch</a>
+                        <a href="Alls-Well-That-Ends-Promo.mp4" target="_blank" class="tag">▶ Watch Full Video</a>
+                        <span class="tag">Tactical Combat</span>
+                        <span class="tag">39s Campaign</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CATAN -->
+            <div class="portfolio-card">
+                <div class="video-wrapper">
+                    <video controls>
+                        <source src="Catan-Promo.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="info">
+                    <h3>CATAN — 6th Edition</h3>
+                    <p>The finished 15-second promo — Vera Strand discovers the island of CATAN. Vertical 9:16 format, cinematic overlay, ready for Shorts & Reels.</p>
+                    <div class="tags">
+                        <a href="https://amzn.to/3PwhFlV" target="_blank" class="tag tag-link">🛒 Buy on Amazon</a>
+                        <a href="Catan-Promo.mp4" target="_blank" class="tag">▶ Watch Full Video</a>
+                        <span class="tag">Product Review</span>
+                        <span class="tag">15s Shorts-Ready</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TICKET TO RIDE -->
+            <div class="portfolio-card">
+                <div class="video-wrapper">
+                    <video controls poster="ttr-thumbnail.jpeg">
+                        <source src="Ticket-To-Ride-16.9.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="info">
+                    <h3>Ticket To Ride — 15th Anniversary</h3>
+                    <p>Vera Strand takes on the classic cross-country train adventure. Route planning, tension, and triumphant arrival — dual format availability.</p>
+                    <div class="tags">
+                        <a href="Ticket-To-Ride-9.16.mp4" target="_blank" class="tag">▶ Watch 9:16</a>
+                        <a href="Ticket-To-Ride-16.9.mp4" target="_blank" class="tag">▶ Watch 16:9</a>
+                        <span class="tag">Unboxing & Review</span>
+                        <span class="tag">Dual Format</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- YONDER -->
+            <div class="portfolio-card">
+                <div class="video-wrapper" style="position: relative;">
+                    <iframe src="https://player.vimeo.com/video/1197082133?badge=0&autopause=0&player_id=0&app_id=58479"
+                            frameborder="0"
+                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                            title="Yonder - Sinister Fish Games">
+                    </iframe>
+                </div>
+                <div class="info">
+                    <h3>Yonder — Sinister Fish Games</h3>
+                    <p>Vera Strand discovers Yonder — a fantasy worker placement game from Sinister Fish Games. Build a settlement. Trade with fantasy races. Explore the unknown.</p>
+                    <div class="tags">
+                        <a href="https://sinisterfish.com" target="_blank" class="tag tag-link">🎮 Publisher Site</a>
+                        <a href="https://vimeo.com/1197082133" target="_blank" class="tag">▶ Watch on Vimeo</a>
+                        <span class="tag">Fantasy</span>
+                        <span class="tag">Worker Placement</span>
+                        <span class="tag">UKGE 2026</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <p>Vera Strand — Original Character. <a href="/vera-board-game-marketing/">Home</a> · <a href="mailto:brettholtuk@gmail.com">Contact</a></p>
+    </div>
+</footer>
+
+</body>
+</html>
